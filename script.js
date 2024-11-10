@@ -57,10 +57,34 @@ function displayBooks() {
     actionsCell.innerHTML =
       '<button class="btn btn-delete" data-book-index="' +
       bookIndex +
-      '" type="button"> <span>icon</span>Delete</button>';
+      '" type="button"> <span>icon</span>Delete</button>' +
+      '<button class="btn btn-status" data-book-index="' +
+      bookIndex +
+      '" type="button"> <span>icon</span>Status</button>';
   }
 
   addDeleteButtonsEventListener();
+  addStatusButtonsEventListener();
+}
+
+function addStatusButtonsEventListener() {
+  const statusButtons = Array.from(document.getElementsByClassName("btn-status"));
+
+  statusButtons.forEach((button) => {
+    const bookIndex = button.getAttribute("data-book-index");
+
+    button.addEventListener("click", () => {
+      changeBookStatus(bookIndex);
+    });
+  });
+}
+
+function changeBookStatus(bookIndex) {
+  const currentBookStatus = myLibrary[bookIndex].read;
+
+  myLibrary[bookIndex].read = !currentBookStatus;
+
+  displayBooks();
 }
 
 function addDeleteButtonsEventListener() {
@@ -88,5 +112,4 @@ displayBooks();
 // }
 
 //todo new book form in dialog/modal
-//todo change status button
 //todo layout
