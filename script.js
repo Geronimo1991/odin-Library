@@ -8,7 +8,7 @@ function Book(title, author, year, numberOfPages, read) {
   this.read = read;
 }
 
-displayBooks();
+//displayBooks();
 displayAddBookButton();
 
 function displayAddBookButton() {

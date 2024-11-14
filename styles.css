@@ -260,6 +260,42 @@ table {
   border-spacing: 0;
 }
 
+* {
+  font-family: Inter, -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+html,
+body {
+  height: 100%;
+  background-color: #ccc
+}
+
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  padding-left: 32px;
+  font-size: 32px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  height: 150px;
+  width: 100%;
+  background-color: white;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
+.content {
+  padding: 50px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 
 
 table,
@@ -325,10 +361,9 @@ form {
   height: 20px;
 }
 
-.submit-btn {
+.btn {
   appearance: none;
   backface-visibility: hidden;
-  background-color: #27ae60;
   border-radius: 8px;
   border-style: none;
   box-shadow: rgba(39, 174, 96, .15) 0 4px 9px;
@@ -336,7 +371,6 @@ form {
   color: #fff;
   cursor: pointer;
   display: inline-block;
-  font-family: Inter, -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif;
   font-size: 16px;
   font-weight: 600;
   letter-spacing: normal;
@@ -356,18 +390,33 @@ form {
   white-space: nowrap;
 }
 
-.submit-btn:hover {
-  background-color: #1e8449;
+.btn:hover {
   opacity: 1;
   transform: translateY(0);
   transition-duration: .35s;
 }
 
-.submit-btn:active {
+.btn:active {
   transform: translateY(2px);
   transition-duration: .35s;
 }
 
-.submit-btn:hover {
+.btn:hover {
   box-shadow: rgba(39, 174, 96, .2) 0 6px 12px;
+}
+
+.btn-addBook {
+  background-color: #27ae60;
+}
+
+.btn-addBook:hover {
+  background-color: #1e8449;
+}
+
+.btn-submit {
+  background-color: #27a9ae;
+}
+
+.btn-submit:hover {
+  background-color: #1e6784;
 }
