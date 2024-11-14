@@ -28,7 +28,6 @@ function addBookEventListener() {
 
 function displayAddBookForm() {
   const dialog = document.querySelector("dialog");
-  const closeBtn = dialog.querySelector("#close-btn");
 
   const addBookForm = document.querySelector("#addBookForm");
   const title = addBookForm.querySelector("#addBookForm-title");
@@ -43,18 +42,9 @@ function displayAddBookForm() {
     "click",
     (event) => {
       if (event.target === dialog) {
+        addBookForm.reset();
         dialog.close();
       }
-    },
-    { once: true }
-  );
-
-  closeBtn.addEventListener(
-    "click",
-    (event) => {
-      event.preventDefault();
-      dialog.close();
-      addBookForm.reset();
     },
     { once: true }
   );

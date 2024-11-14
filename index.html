@@ -14,41 +14,23 @@
 
     <dialog>
         <div class="dialogContainer">
-            <p>Please fill this form to add new book to your library:</p>
+            <h1>Add new book</h1>
             <form id="addBookForm">
-                <p>
-                    <label>
-                        Title
-                        <input id="addBookForm-title" name="title" type="text" required />
-                    </label>
-                </p>
-                <p>
-                    <label>
-                        Author
-                        <input id="addBookForm-author" name="author" type="text" required />
-                    </label>
-                </p>
-                <p>
-                    <label>
-                        Year of release
-                        <input id="addBookForm-year" name="year" type="number" required />
-                    </label>
-                </p>
-                <p>
-                    <label>
-                        Number of pages
-                        <input id="addBookForm-pages" name="numberOfPages" type="number" required />
-                    </label>
-                </p>
-                <p>
-                    <label>
-                        Have you read it?
-                        <input id="addBookForm-read" name="read" type="checkbox" checked value="read" />
-                    </label>
-                </p>
-                <div>
-                    <input type="submit" id="submit-btn" value="Add book" />
-                    <input type="submit" id="close-btn" value="Cancel" />
+                <input class="inputField" id="addBookForm-title" name="title" type="text" placeholder="Title" required />
+
+                <input class="inputField" id="addBookForm-author" name="author" type="text" placeholder="Author" required />
+
+                <input class="inputField" id="addBookForm-year" name="year" type="number" placeholder="Year of release" required />
+
+                <input class="inputField" id="addBookForm-pages" name="numberOfPages" type="number" placeholder="Number of pages"
+                    required />
+
+                <div class="checkBoxContainer">
+                    Have you read it?
+                    <input class="checkbox" id="addBookForm-read" name="read" type="checkbox" checked value="read" />
+                </div>
+                <div class="formButtonsContainer">
+                    <input class="submit-btn" type="submit" id="submit-btn" value="Add book" />
                 </div>
             </form>
         </div>
