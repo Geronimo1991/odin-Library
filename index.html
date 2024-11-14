@@ -9,9 +9,50 @@
 </head>
 
 <body>
-    <div id="tableContainer">
-    </div>
-    <button>New Book</button>
+    <div id="tableContainer"></div>
+    <div id="addBookButtonContainer"></div>
+
+    <dialog>
+        <div class="dialogContainer">
+            <p>Please fill this form to add new book to your library:</p>
+            <form id="addBookForm">
+                <p>
+                    <label>
+                        Title
+                        <input id="addBookForm-title" name="title" type="text" required />
+                    </label>
+                </p>
+                <p>
+                    <label>
+                        Author
+                        <input id="addBookForm-author" name="author" type="text" required />
+                    </label>
+                </p>
+                <p>
+                    <label>
+                        Year of release
+                        <input id="addBookForm-year" name="year" type="number" required />
+                    </label>
+                </p>
+                <p>
+                    <label>
+                        Number of pages
+                        <input id="addBookForm-pages" name="numberOfPages" type="number" required />
+                    </label>
+                </p>
+                <p>
+                    <label>
+                        Have you read it?
+                        <input id="addBookForm-read" name="read" type="checkbox" checked value="read" />
+                    </label>
+                </p>
+                <div>
+                    <input type="submit" id="submit-btn" value="Add book" />
+                    <input type="submit" id="close-btn" value="Cancel" />
+                </div>
+            </form>
+        </div>
+    </dialog>
 
     <script src="script.js"></script>
 </body>

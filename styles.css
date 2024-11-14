@@ -1,3 +1,13 @@
-table, th, td {
-    border: 1px solid;
-  }
+table,
+th,
+td {
+  border: 1px solid;
+}
+
+dialog {
+  padding: 0;
+}
+
+.dialogContainer {
+  padding: 16px;
+}
