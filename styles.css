@@ -288,7 +288,8 @@ body {
   box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
 
-.content {
+.contentContainer {
+  gap: 50px;
   padding: 50px;
   height: 100%;
   display: flex;
@@ -296,16 +297,32 @@ body {
   align-items: center;
 }
 
+.libraryContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 50px;
+  justify-items: center;
+}
 
+.bookContainer {
+  padding: 10px;
+  background-color: white;
+  border-radius: 10px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
 
-table,
-th,
-td {
-  border: 1px solid;
+.bookActions {
+  display: flex;
+  gap: 10px;
 }
 
 dialog {
   padding: 0;
+
   border-radius: 15px;
 }
 
@@ -419,4 +436,20 @@ form {
 
 .btn-submit:hover {
   background-color: #1e6784;
+}
+
+.btn-delete {
+  background-color: #ae2727;
+}
+
+.btn-delete:hover {
+  background-color: #841e1e;
+}
+
+.btn-status {
+  background-color: #2927ae;
+}
+
+.btn-status:hover {
+  background-color: #281e84;
 }

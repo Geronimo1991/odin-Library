@@ -1,4 +1,19 @@
-let myLibrary = [];
+let myLibrary = [
+  {
+    title: "book1",
+    author: "author1",
+    year: "1995",
+    numberOfPages: "15",
+    read: true,
+  },
+  {
+    title: "book2",
+    author: "author2",
+    year: "1997",
+    numberOfPages: "25",
+    read: false,
+  },
+];
 
 function Book(title, author, year, numberOfPages, read) {
   this.title = title;
@@ -8,15 +23,8 @@ function Book(title, author, year, numberOfPages, read) {
   this.read = read;
 }
 
-//displayBooks();
-displayAddBookButton();
-
-function displayAddBookButton() {
-  let container = document.getElementById("addBookButtonContainer");
-  container.innerHTML = '<button class="btn btn-addBook" id="btn-addBook">Add Book</button>';
-
-  addBookEventListener();
-}
+addBookEventListener();
+displayBooks();
 
 function addBookEventListener() {
   const addBookButton = document.getElementById("btn-addBook");
@@ -68,47 +76,43 @@ function addBookToLibrary(title, author, year, numberOfPages, read) {
 }
 
 function displayBooks() {
-  createBooksTable();
-  let table = document.getElementById("booksTable");
+  const libraryContainer = document.getElementById("libraryContainer");
+  libraryContainer.replaceChildren();
 
   for (let bookIndex = 0; bookIndex < myLibrary.length; bookIndex++) {
-    let row = table.insertRow(bookIndex + 1);
+    titleValue = myLibrary[bookIndex]["title"];
+    authorValue = myLibrary[bookIndex]["author"];
+    yearValue = myLibrary[bookIndex]["year"];
+    pagesValue = myLibrary[bookIndex]["numberOfPages"];
+    readValue = myLibrary[bookIndex]["read"] === true ? "Already read" : "Not read yet";
+    const newBookDiv = document.createElement("div");
+    newBookDiv.classList.add("bookContainer");
 
-    let titleCell = row.insertCell(0);
-    let authorCell = row.insertCell(1);
-    let yearCell = row.insertCell(2);
-    let numberOfPagesCell = row.insertCell(3);
-    let readCell = row.insertCell(4);
-    let actionsCell = row.insertCell(5);
+    newBookDiv.insertAdjacentHTML(
+      "beforeend",
+      "<p> Title: " +
+        titleValue +
+        "<p> Author: " +
+        authorValue +
+        "<p> Year of release: " +
+        yearValue +
+        "<p> Pages: " +
+        pagesValue +
+        "<p> Read: " +
+        readValue +
+        '<p class="bookActions"><button class="btn btn-delete" data-book-index="' +
+        bookIndex +
+        '" type="button">Delete</button>' +
+        '<button class="btn btn-status" data-book-index="' +
+        bookIndex +
+        '" type="button">Status</button>'
+    );
 
-    titleCell.innerText = myLibrary[bookIndex]["title"];
-    authorCell.innerText = myLibrary[bookIndex]["author"];
-    yearCell.innerText = myLibrary[bookIndex]["year"];
-    numberOfPagesCell.innerText = myLibrary[bookIndex]["numberOfPages"];
-
-    if (myLibrary[bookIndex]["read"] === true) {
-      readCell.innerText = "Already read";
-    } else {
-      readCell.innerText = "Not read yet";
-    }
-
-    actionsCell.innerHTML =
-      '<button class="btn btn-delete" data-book-index="' +
-      bookIndex +
-      '" type="button"> <span>icon</span>Delete</button>' +
-      '<button class="btn btn-status" data-book-index="' +
-      bookIndex +
-      '" type="button"> <span>icon</span>Status</button>';
+    libraryContainer.appendChild(newBookDiv);
   }
 
   addDeleteButtonsEventListener();
   addStatusButtonsEventListener();
-}
-
-function createBooksTable() {
-  let container = document.getElementById("tableContainer");
-  container.innerHTML =
-    '<table id="booksTable"><tr><th>Title</th><th>Author</th><th>Year</th><th>Number of pages</th><th>Read</th><th>Actions</th></tr></table>';
 }
 
 function addStatusButtonsEventListener() {
@@ -117,16 +121,20 @@ function addStatusButtonsEventListener() {
   statusButtons.forEach((button) => {
     const bookIndex = button.getAttribute("data-book-index");
 
-    button.addEventListener("click", () => {
-      changeBookStatus(bookIndex);
-    });
+    button.addEventListener(
+      "click",
+      () => {
+        toggleBookStatus(bookIndex);
+      },
+      { once: true }
+    );
   });
 }
 
-function changeBookStatus(bookIndex) {
-  const currentBookStatus = myLibrary[bookIndex].read;
+function toggleBookStatus(bookIndex) {
+  const book = myLibrary[bookIndex];
 
-  myLibrary[bookIndex].read = !currentBookStatus;
+  book.read = !book.read;
 
   displayBooks();
 }
@@ -137,9 +145,13 @@ function addDeleteButtonsEventListener() {
   deleteButtons.forEach((button) => {
     const bookIndex = button.getAttribute("data-book-index");
 
-    button.addEventListener("click", () => {
-      deleteBookFromLibrary(bookIndex);
-    });
+    button.addEventListener(
+      "click",
+      () => {
+        deleteBookFromLibrary(bookIndex);
+      },
+      { once: true }
+    );
   });
 }
 
@@ -148,4 +160,6 @@ function deleteBookFromLibrary(bookIndex) {
   displayBooks();
 }
 
-//todo layout
+//closing form adds book in array
+//fix layout when many items
+//refactor code for clarity
