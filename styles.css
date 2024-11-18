@@ -260,14 +260,11 @@ table {
   border-spacing: 0;
 }
 
-* {
-  font-family: Inter, -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif;
-}
-
 html,
 body {
   height: 100%;
-  background-color: #ccc
+  background-color: #ccc;
+  font-family: Poppins, sans-serif;
 }
 
 .container {

@@ -23,10 +23,15 @@ function Book(title, author, year, numberOfPages, read) {
   this.read = read;
 }
 
-addBookEventListener();
+const dialog = document.querySelector("dialog");
+const addBookForm = document.querySelector("#addBookForm");
+
+addBookButtonEventListener();
+addBookFormSubmitButtonEventListener(dialog, addBookForm);
+addClickOutsideOfDialogEventListener(dialog, addBookForm);
 displayBooks();
 
-function addBookEventListener() {
+function addBookButtonEventListener() {
   const addBookButton = document.getElementById("btn-addBook");
 
   addBookButton.addEventListener("click", () => {
@@ -35,38 +40,32 @@ function addBookEventListener() {
 }
 
 function displayAddBookForm() {
-  const dialog = document.querySelector("dialog");
+  dialog.showModal();
+}
 
-  const addBookForm = document.querySelector("#addBookForm");
+function addClickOutsideOfDialogEventListener(dialog, addBookForm) {
+  dialog.addEventListener("click", (event) => {
+    if (event.target === dialog) {
+      addBookForm.reset();
+      dialog.close();
+    }
+  });
+}
+
+function addBookFormSubmitButtonEventListener() {
   const title = addBookForm.querySelector("#addBookForm-title");
   const author = addBookForm.querySelector("#addBookForm-author");
   const year = addBookForm.querySelector("#addBookForm-year");
   const pages = addBookForm.querySelector("#addBookForm-pages");
   const read = addBookForm.querySelector("#addBookForm-read");
 
-  dialog.showModal();
-
-  dialog.addEventListener(
-    "click",
-    (event) => {
-      if (event.target === dialog) {
-        addBookForm.reset();
-        dialog.close();
-      }
-    },
-    { once: true }
-  );
-
-  addBookForm.addEventListener(
-    "submit",
-    (event) => {
-      event.preventDefault();
-      addBookToLibrary(title.value, author.value, year.value, pages.value, read.checked);
-      dialog.close();
-      addBookForm.reset();
-    },
-    { once: true }
-  );
+  addBookForm.addEventListener("submit", (event) => {
+    console.log("dodanie");
+    event.preventDefault();
+    addBookToLibrary(title.value, author.value, year.value, pages.value, read.checked);
+    dialog.close();
+    addBookForm.reset();
+  });
 }
 
 function addBookToLibrary(title, author, year, numberOfPages, read) {
@@ -160,6 +159,5 @@ function deleteBookFromLibrary(bookIndex) {
   displayBooks();
 }
 
-//closing form adds book in array
 //fix layout when many items
 //refactor code for clarity
