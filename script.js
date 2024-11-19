@@ -1,19 +1,4 @@
-let myLibrary = [
-  {
-    title: "book1",
-    author: "author1",
-    year: "1995",
-    numberOfPages: "15",
-    read: true,
-  },
-  {
-    title: "book2",
-    author: "author2",
-    year: "1997",
-    numberOfPages: "25",
-    read: false,
-  },
-];
+let myLibrary = [];
 
 function Book(title, author, year, numberOfPages, read) {
   this.title = title;
@@ -60,9 +45,10 @@ function addBookFormSubmitButtonEventListener() {
   const read = addBookForm.querySelector("#addBookForm-read");
 
   addBookForm.addEventListener("submit", (event) => {
-    console.log("dodanie");
     event.preventDefault();
+
     addBookToLibrary(title.value, author.value, year.value, pages.value, read.checked);
+
     dialog.close();
     addBookForm.reset();
   });
@@ -71,6 +57,7 @@ function addBookFormSubmitButtonEventListener() {
 function addBookToLibrary(title, author, year, numberOfPages, read) {
   const newBook = new Book(title, author, year, numberOfPages, read);
   myLibrary.push(newBook);
+
   displayBooks();
 }
 
@@ -78,12 +65,20 @@ function displayBooks() {
   const libraryContainer = document.getElementById("libraryContainer");
   libraryContainer.replaceChildren();
 
+  populateLibraryContainer(libraryContainer);
+
+  addDeleteButtonsEventListener();
+  addStatusButtonsEventListener();
+}
+
+function populateLibraryContainer(libraryContainer) {
   for (let bookIndex = 0; bookIndex < myLibrary.length; bookIndex++) {
     titleValue = myLibrary[bookIndex]["title"];
     authorValue = myLibrary[bookIndex]["author"];
     yearValue = myLibrary[bookIndex]["year"];
     pagesValue = myLibrary[bookIndex]["numberOfPages"];
     readValue = myLibrary[bookIndex]["read"] === true ? "Already read" : "Not read yet";
+
     const newBookDiv = document.createElement("div");
     newBookDiv.classList.add("bookContainer");
 
@@ -109,9 +104,6 @@ function displayBooks() {
 
     libraryContainer.appendChild(newBookDiv);
   }
-
-  addDeleteButtonsEventListener();
-  addStatusButtonsEventListener();
 }
 
 function addStatusButtonsEventListener() {
@@ -156,8 +148,6 @@ function addDeleteButtonsEventListener() {
 
 function deleteBookFromLibrary(bookIndex) {
   myLibrary.splice(bookIndex, 1);
+
   displayBooks();
 }
-
-//fix layout when many items
-//refactor code for clarity
