@@ -11,11 +11,15 @@
 <body>
     <div class="container">
         <div class="header">
-            <div>My library project</div>
             <div>
+                <span>My library project</span>
+            </div>
+
+            <div class="addButtonContainer">
                 <button class="btn btn-addBook" id="btn-addBook">Add Book</button>
             </div>
         </div>
+
         <div id="contentContainer" class="contentContainer">
             <div id="libraryContainer" class="libraryContainer"></div>
         </div>
@@ -41,6 +45,7 @@
                     Have you read it?
                     <input class="checkbox" id="addBookForm-read" name="read" type="checkbox" checked value="read" />
                 </div>
+
                 <div class="formButtonsContainer">
                     <input class="btn btn-submit" type="submit" id="btn-submit" value="Submit new book" />
                 </div>

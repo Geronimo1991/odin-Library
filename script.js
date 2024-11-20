@@ -1,4 +1,45 @@
-let myLibrary = [];
+let myLibrary = [
+  { title: "dasd" },
+  { title: "dasd" },
+  { title: "dasd" },
+  { title: "dasd" },
+  { title: "dasd" },
+  { title: "dasd" },
+  { title: "dasd" },
+  { title: "dasd" },
+  { title: "dasd" },
+  { title: "dasd" },
+  { title: "dasd" },
+  { title: "dasd" },
+  { title: "dasd" },
+  { title: "dasd" },
+  { title: "dasd" },
+  { title: "dasd" },
+  { title: "dasd" },
+  { title: "dasd" },
+  { title: "dasd" },
+  { title: "dasd" },
+  { title: "dasd" },
+  { title: "dasd" },
+  { title: "dasd" },
+  { title: "dasd" },
+  { title: "dasd" },
+  { title: "dasd" },
+  { title: "dasd" },
+  { title: "dasd" },
+  { title: "dasd" },
+  { title: "dasd" },
+  { title: "dasd" },
+  { title: "dasd" },
+  { title: "dasd" },
+  { title: "dasd" },
+  { title: "dasd" },
+  { title: "dasd" },
+  { title: "dasd" },
+  { title: "dasd" },
+  { title: "dasd" },
+  { title: "dasd" },
+];
 
 function Book(title, author, year, numberOfPages, read) {
   this.title = title;
@@ -151,3 +192,5 @@ function deleteBookFromLibrary(bookIndex) {
 
   displayBooks();
 }
+
+//fix contentcontainer size
